@@ -11,12 +11,23 @@ using System.Threading.Tasks;
 namespace CarWashAppFinal.View
 {
     public delegate Result IdValidatorDelegate(string? input, int maxCount, out int parsedId);
+
+    /// <summary>
+    /// Handles user input and validation for the console interface.
+    /// </summary>
     public class ConsoleReader
     {
         private const int MaxAttempts = 3;
         private readonly UserManager _userManager;
         private readonly VehicleManager _vehicleManager;
         private readonly ConsoleUI _consoleUI;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleReader"/> class.
+        /// </summary>
+        /// <param name="userManager">The manager used to handle user operations.</param>
+        /// <param name="vehicleManager">The manager used to handle vehicle operations.</param>
+        /// <param name="consoleUI">The console UI used to display application information.</param>
         public ConsoleReader(UserManager userManager, VehicleManager vehicleManager, ConsoleUI consoleUI)
         {
             _userManager = userManager;
@@ -24,6 +35,12 @@ namespace CarWashAppFinal.View
             _consoleUI = consoleUI;
         }
 
+        /// <summary>
+        /// Reads and validates user input using the specified validator.
+        /// </summary>
+        /// <param name="prompt">The prompt displayed to the user.</param>
+        /// <param name="validator">The function used to validate the input.</param>
+        /// <returns>The valid input, or <c>null</c> if input is cancelled or validation fails.</returns>
         public static string? Get(string prompt, Func<string?, Result> validator)
         {
             for (int attempts = 1; attempts <= MaxAttempts; attempts++)
@@ -58,6 +75,13 @@ namespace CarWashAppFinal.View
             return null;
         }
 
+        /// <summary>
+        /// Reads and validates a vehicle ID.
+        /// </summary>
+        /// <param name="prompt">The prompt displayed to the user.</param>
+        /// <param name="maxCount">The maximum valid vehicle ID.</param>
+        /// <param name="validator">The delegate used to validate the ID.</param>
+        /// <returns>The valid vehicle ID, or <c>null</c> if input is cancelled.</returns>
         public static int? GetValidId(string prompt, int maxCount, IdValidatorDelegate validator)
         {
             string? input = ReadInput(prompt, false);
@@ -76,6 +100,12 @@ namespace CarWashAppFinal.View
             return 0;
         }
 
+        /// <summary>
+        /// Reads input from the console, optionally masking the characters for passwords.
+        /// </summary>
+        /// <param name="prompt">The prompt displayed to the user.</param>
+        /// <param name="isPassword">Indicates whether the input should be masked.</param>
+        /// <returns>The entered input, or <c>null</c> if the user presses Escape.</returns>
         public static string? ReadInput(string prompt, bool isPassword)
         {
             Console.Write(prompt);

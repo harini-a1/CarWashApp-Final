@@ -6,11 +6,21 @@ using CarWashAppFinal.Services;
 
 namespace CarWashAppFinal.View
 {
+    /// <summary>
+    /// Provides the console-based user interface for the car wash application.
+    /// </summary>
     public class ConsoleUI
     {
         private readonly UserManager _userManager;
         private readonly VehicleManager _vehicleManager;
         private readonly CarWashManager _carWashManager;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleUI"/> class.
+        /// </summary>
+        /// <param name="userManager">The manager used to handle user operations.</param>
+        /// <param name="vehicleManager">The manager used to handle vehicle operations.</param>
+        /// <param name="carWashManager">The manager used to handle car wash operations.</param>
         public ConsoleUI(UserManager userManager, VehicleManager vehicleManager, CarWashManager carWashManager)
         {
             _userManager = userManager;
@@ -18,6 +28,9 @@ namespace CarWashAppFinal.View
             _carWashManager = carWashManager;
         }
 
+        /// <summary>
+        /// Displays the main menu and handles user selections.
+        /// </summary>
         public void DisplayMenu()
         {
             while (true)
@@ -53,6 +66,9 @@ namespace CarWashAppFinal.View
             }
         }
 
+        /// <summary>
+        /// Handles the user registration process.
+        /// </summary>
         public void Register()
         {
             string? username = ConsoleReader.Get("Enter username: ", Validators.IsValidUsername);
@@ -84,7 +100,9 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
-
+        /// <summary>
+        /// Handles the user login process.
+        /// </summary>
         public void Login()
         {
             string? username = ConsoleReader.Get("Enter username: ", Validators.IsValid);
@@ -111,6 +129,10 @@ namespace CarWashAppFinal.View
             this.DisplayUserMenu(user.Id);
         }
 
+        // <summary>
+        /// Displays the menu available to a logged-in user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the logged-in user.</param>
         public void DisplayUserMenu(Guid userId)
         {
             this.TriggerMissedNotifications(userId);
@@ -154,6 +176,10 @@ namespace CarWashAppFinal.View
             }
         }
 
+        /// <summary>
+        /// Adds a new vehicle for the specified user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
         public void Add(Guid userId)
         {
             string? name = ConsoleReader.Get("Enter vehicle name: ", Validators.IsValidVehicleName);
@@ -173,6 +199,10 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
+        /// <summary>
+        /// Displays all vehicles belonging to the specified user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
         public void View(Guid userId)
         {
             IReadOnlyList<Vehicle> vehicles = this._vehicleManager.GetAll(userId);
@@ -180,6 +210,10 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
+        /// <summary>
+        /// Starts a car wash for the vehicle selected by the user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
         public void Wash(Guid userId)
         {
             IReadOnlyList<Vehicle> vehicles = this._vehicleManager.GetAll(userId);
@@ -201,6 +235,10 @@ namespace CarWashAppFinal.View
             Console.WriteLine("Sending to wash...");
         }
 
+        /// <summary>
+        /// Displays the completed vehicle wash history for the specified user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
         public void ViewHistory(Guid userId)
         {
             IReadOnlyList<Vehicle> servicedVehicles = this._vehicleManager
@@ -211,6 +249,10 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
+        /// <summary>
+        /// Displays the pending notifications for the specified user.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
         public void Notification(Guid userId)
         {
             IReadOnlyList<Vehicle> unnotifiedVehicles = this._vehicleManager
@@ -221,6 +263,10 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
+        /// <summary>
+        /// Displays notifications for washes that were completed while the user was logged out.
+        /// </summary>
+        /// <param name="userId">The unique identifier of the user.</param>
         public void TriggerMissedNotifications(Guid userId)
         {
             IReadOnlyList<Vehicle>? unnotifiedVehicles = this._vehicleManager
@@ -239,6 +285,10 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
+        /// <summary>
+        /// Displays the details of the specified vehicles.
+        /// </summary>
+        /// <param name="vehicles">The vehicles to display.</param>
         public static void DisplayVehicles(IReadOnlyList<Vehicle> vehicles)
         {
             int index = 1;
@@ -260,11 +310,18 @@ namespace CarWashAppFinal.View
                 Console.WriteLine("No vehicles found.");
             }
         }
+
+        /// <summary>
+        /// Displays a message when the application is exiting.
+        /// </summary>
         public static void DisplayExitMessage()
         {
             Console.WriteLine("Exiting...");
         }
 
+        /// <summary>
+        /// Displays a message indicating that the entered input is invalid.
+        /// </summary>
         public static void DisplayInvalidMessage()
         {
             Console.WriteLine("Invalid input.");
@@ -272,6 +329,9 @@ namespace CarWashAppFinal.View
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Displays a message when the maximum number of input attempts is exceeded.
+        /// </summary>
         public static void ShowTooManyAttemptsMessage()
         {
             Console.WriteLine("Too many invalid attempts.");
@@ -279,12 +339,18 @@ namespace CarWashAppFinal.View
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Pauses the console until the user presses a key.
+        /// </summary>
         public static void Pause()
         {
             Console.WriteLine("Press any key to continue");
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Displays a message indicating that all car wash slots are occupied.
+        /// </summary>
         public static void DisplaySlotsUnavailable()
         {
             Console.WriteLine("The current slots are filled. Status: Waiting.");
@@ -292,6 +358,9 @@ namespace CarWashAppFinal.View
             Pause();
         }
 
+        /// <summary>
+        /// Displays a notification indicating that the user's car wash is completed and ready for pickup.
+        /// </summary>
         public static void DisplayCarReady()
         {
             Console.WriteLine("Your car has been washed and ready for pickup");

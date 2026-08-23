@@ -4,8 +4,18 @@ using System.Text.RegularExpressions;
 
 namespace CarWashAppFinal.Helpers
 {
+    /// <summary>
+    /// Provides validation methods for user, vehicle, and input data.
+    /// </summary>
     public class Validators
     {
+        /// <summary>
+        /// Validates a vehicle ID against the available vehicle count.
+        /// </summary>
+        /// <param name="id">The vehicle ID provided as a string.</param>
+        /// <param name="countOfVehicles">The total number of vehicles available.</param>
+        /// <param name="idNumber">The parsed vehicle ID number.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the ID is valid.</returns>
         public static Result IsValidId(string? id, int countOfVehicles, out int idNumber)
         {
             idNumber = 0;
@@ -30,6 +40,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        /// <summary>
+        /// Validates a username according to the required length and character rules.
+        /// </summary>
+        /// <param name="username">The username to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the username is valid.</returns>
         public static Result IsValidUsername(string? username)
         {
             if (string.IsNullOrWhiteSpace(username))
@@ -55,6 +70,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        /// <summary>
+        /// Validates a password based on length and character requirements.
+        /// </summary>
+        /// <param name="password">The password to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the password is valid.</returns>
         public static Result IsValidPassword(string? password)
         {
             if (string.IsNullOrWhiteSpace(password))
@@ -79,6 +99,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        /// <summary>
+        /// Validates a phone number to ensure it contains exactly ten digits.
+        /// </summary>
+        /// <param name="phone">The phone number to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the phone number is valid.</returns>
         public static Result IsValidPhone(string? phone)
         {
             if (string.IsNullOrWhiteSpace(phone))
@@ -99,6 +124,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        /// <summary>
+        /// Validates an email address using email address formatting rules.
+        /// </summary>
+        /// <param name="email">The email address to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the email address is valid.</returns>
         public static Result IsValidEmail(string? email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -124,6 +154,11 @@ namespace CarWashAppFinal.Helpers
             }
         }
 
+        /// <summary>
+        /// Validates that the provided input is not empty or whitespace.
+        /// </summary>
+        /// <param name="input">The input value to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the input is valid.</returns>
         public static Result IsValid(string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -134,6 +169,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        // <summary>
+        /// Validates that the login password is not empty or whitespace.
+        /// </summary>
+        /// <param name="input">The password input to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the password is valid.</returns>
         public static Result IsValidLoginPassword(string? input)
         {
             if (string.IsNullOrWhiteSpace(input))
@@ -144,6 +184,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        /// <summary>
+        /// Validates a vehicle registration number against the required format.
+        /// </summary>
+        /// <param name="vehicleNumber">The vehicle registration number to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the vehicle number is valid.</returns>
         public static Result IsValidVehicleNumber(string? vehicleNumber)
         {
             if (string.IsNullOrWhiteSpace(vehicleNumber))
@@ -160,6 +205,11 @@ namespace CarWashAppFinal.Helpers
             return new(true, null);
         }
 
+        /// <summary>
+        /// Validates a vehicle name based on the required length.
+        /// </summary>
+        /// <param name="vehicleName">The vehicle name to validate.</param>
+        /// <returns>A <see cref="Result"/> indicating whether the vehicle name is valid.</returns>
         public static Result IsValidVehicleName(string? vehicleName)
         {
             if (string.IsNullOrWhiteSpace(vehicleName))

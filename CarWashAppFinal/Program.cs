@@ -4,8 +4,15 @@ using CarWashAppFinal.View;
 
 namespace CarWashAppFinal
 {
+    /// <summary>
+    /// Program class to start app
+    /// </summary>
     internal class Program
     {
+        /// <summary>
+        /// Main method
+        /// </summary>
+        /// <param name="args">Any argument</param>
         static void Main(string[] args)
         {
             IUserRepository userRepository = new UserRepository();
