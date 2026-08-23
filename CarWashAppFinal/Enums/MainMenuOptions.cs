@@ -1,4 +1,4 @@
-﻿namespace CarWash.Enums
+﻿namespace CarWashAppFinal.Enums
 {
     public enum MainMenuOptions
     {

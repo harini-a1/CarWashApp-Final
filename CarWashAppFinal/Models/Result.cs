@@ -1,4 +1,4 @@
-﻿namespace CarWash.Models
+﻿namespace CarWashAppFinal.Models
 {
     public class Result
     {

@@ -1,8 +1,8 @@
-﻿using CarWash.Models;
+﻿using CarWashAppFinal.Models;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 
-namespace CarWash.Helpers
+namespace CarWashAppFinal.Helpers
 {
     public class Validators
     {

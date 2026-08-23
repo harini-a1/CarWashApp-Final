@@ -1,10 +1,11 @@
-﻿using CarWash.Enums;
-using CarWash.Models;
+﻿using CarWashAppFinal.Enums;
+using CarWashAppFinal.Models;
+using CarWashAppFinal.Repositories;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-namespace CarWash.Repositories
+namespace CarWashAppFinal.Repositories
 {
-    public class VehicleRepository
+    public class VehicleRepository : IVehicleRepository
     {
         private readonly string _filePath;
         private readonly List<Vehicle> _vehicles;
@@ -21,7 +22,7 @@ namespace CarWash.Repositories
 
         public IReadOnlyList<Vehicle> GetAll(Guid userId)
         {
-            return _vehicles;
+            return _vehicles.Where(v => v.UserId == userId).ToList();
         }
 
         public Vehicle? Get(Guid userId, int id)

@@ -1,17 +1,16 @@
-﻿using CarWash.Enums;
-using CarWash.Models;
-using CarWash.Repositories;
-using CarWash.View;
-using System.Timers;
+﻿using CarWashAppFinal.Enums;
+using CarWashAppFinal.Models;
+using CarWashAppFinal.Repositories;
+using CarWashAppFinal.View;
 
-namespace CarWash.Services
+namespace CarWashAppFinal.Services
 {
     public class CarWashManager
     {
-        private readonly VehicleRepository _vehicleRepository;
+        private readonly IVehicleRepository _vehicleRepository;
         private readonly UserManager _userManager;
         private readonly Dictionary<Guid, DateTime> _activeWashes = new();
-        public CarWashManager(VehicleRepository vehicleRepository, UserManager userManager)
+        public CarWashManager(IVehicleRepository vehicleRepository, UserManager userManager)
         {
             _vehicleRepository = vehicleRepository;
             _userManager = userManager;

@@ -1,14 +1,14 @@
 ﻿using System.Timers;
-using CarWash.Enums;
-using CarWash.Models;
-using CarWash.Repositories;
-namespace CarWash.Services
+using CarWashAppFinal.Enums;
+using CarWashAppFinal.Models;
+using CarWashAppFinal.Repositories;
+namespace CarWashAppFinal.Services
 {
     ///public delegate void Notify();
     public class VehicleManager
     {
-        private readonly VehicleRepository _vehicleRepository;
-        public VehicleManager(UserRepository userRepository, VehicleRepository vehicleRepository)
+        private readonly IVehicleRepository _vehicleRepository;
+        public VehicleManager(IVehicleRepository vehicleRepository)
         {
             _vehicleRepository = vehicleRepository;
         }

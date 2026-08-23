@@ -1,7 +1,7 @@
-﻿using CarWash.Enums;
+﻿using CarWashAppFinal.Enums;
 using System.Text.Json.Serialization;
 
-namespace CarWash.Models
+namespace CarWashAppFinal.Models
 {
     public class Vehicle
     {

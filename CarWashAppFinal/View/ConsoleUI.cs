@@ -1,10 +1,10 @@
-﻿using CarWash.Enums;
-using CarWash.Helpers;
-using CarWash.Models;
-using CarWash.Repositories;
-using CarWash.Services;
+﻿using CarWashAppFinal.Enums;
+using CarWashAppFinal.Helpers;
+using CarWashAppFinal.Models;
+using CarWashAppFinal.Repositories;
+using CarWashAppFinal.Services;
 
-namespace CarWash.View
+namespace CarWashAppFinal.View
 {
     public class ConsoleUI
     {

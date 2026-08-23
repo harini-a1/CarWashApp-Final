@@ -1,14 +1,13 @@
-﻿using CarWash.Helpers;
-using CarWash.Models;
-using CarWash.Repositories;
+﻿using CarWashAppFinal.Models;
+using CarWashAppFinal.Repositories;
 
-namespace CarWash.Services
+namespace CarWashAppFinal.Services
 {
     public class UserManager
     {
-        private readonly UserRepository _repository;
+        private readonly IUserRepository _repository;
         private static Guid? _currentUserId;
-        public UserManager(UserRepository userRepository)
+        public UserManager(IUserRepository userRepository)
         {
             _repository = userRepository;
         }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace CarWash.Models
+namespace CarWashAppFinal.Models
 {
     public class User
     {

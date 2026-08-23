@@ -1,14 +1,14 @@
-﻿using CarWash.Enums;
-using CarWash.Helpers;
-using CarWash.Models;
-using CarWash.Services;
+﻿using CarWashAppFinal.Enums;
+using CarWashAppFinal.Helpers;
+using CarWashAppFinal.Models;
+using CarWashAppFinal.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarWash.View
+namespace CarWashAppFinal.View
 {
     public delegate Result IdValidatorDelegate(string? input, int maxCount, out int parsedId);
     public class ConsoleReader

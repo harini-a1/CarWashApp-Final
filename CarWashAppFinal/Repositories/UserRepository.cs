@@ -1,9 +1,10 @@
 ﻿using System.Text.Json;
-using CarWash.Models;
+using CarWashAppFinal.Models;
+using CarWashAppFinal.Repositories;
 
-namespace CarWash.Repositories
+namespace CarWashAppFinal.Repositories
 {
-    public class UserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly string _filePath;
         private readonly List<User> _users;
